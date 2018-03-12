@@ -1,0 +1,17 @@
+{
+  "apps": [
+    {
+      "name": "demo",
+      "script": "bin/www",
+      "instances": 1,
+      "merge_logs": true,
+      "watch": true,
+      "out_file": "/dev/null",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": "80"
+      },
+      "max_memory_restart": "300M"
+    }
+  ]
+}
