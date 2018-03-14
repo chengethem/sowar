@@ -6,7 +6,7 @@ async function count(req, res, next) {
   const a = +new Date;
   await next();
   const b = +new Date();
-  console.info('response time:', a, b, b - a);
+  console.info('response time is:', a, b, b - a);
 }
 router.get('/', count, function (req, res, next) {
   res.render('index', { title: 'Express' });
