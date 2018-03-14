@@ -21,7 +21,8 @@ app.set('port', port);
 
 var server = http.createServer(app);
 if (process.env.NODE_ENV === 'production') {
-  const fs = reuqire('fs');
+  const fs = require('fs');
+  const path = require('path');
   const https = require('https');
   const https_options = {
     key: fs.readFileSync(path.join(__dirname, './CA/214174931250538.key')),
