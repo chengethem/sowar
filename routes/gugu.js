@@ -5,7 +5,7 @@ const moment = require('moment');
 const http = require('http');
 const querystring = require('querystring');
 const Iconv = require('iconv').Iconv;
-const Memobird = require('Memobird');
+const Memobird = require('memobird');
 const gm = require('gm');
 // const example_config = {
 //   ak: 'e272c99b552547718b06f745db8941d4',
