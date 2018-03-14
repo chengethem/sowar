@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "init": "yarn install",
-    "start": "node ./bin/www"
+    "start": "pm2 start dev.json",
+    "begin": "pm2 start prod.json"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
