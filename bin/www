@@ -6,21 +6,11 @@
 
 var app = require('../app');
 var debug = require('debug')('demo:server');
-var http = require('http');
+let server;
 
-/**
- * Get port from environment and store in Express.
- */
-
-var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
-
-/**
- * Create HTTP server.
- */
-
-var server = http.createServer(app);
 if (process.env.NODE_ENV === 'production') {
+  var port = normalizePort(443);
+  app.set('port', port);
   const fs = require('fs');
   const path = require('path');
   const https = require('https');
@@ -28,7 +18,22 @@ if (process.env.NODE_ENV === 'production') {
     key: fs.readFileSync(path.join(__dirname, './CA/214174931250538.key')),
     cert: fs.readFileSync(path.join(__dirname, './CA/214174931250538.pem'))
   };
-  https.createServer(https_options, app).listen(443);
+  server = https.createServer(https_options, app);
+} else {
+  var http = require('http');
+
+  /**
+   * Get port from environment and store in Express.
+   */
+
+  var port = normalizePort(process.env.PORT || '3000');
+  app.set('port', port);
+
+  /**
+   * Create HTTP server.
+   */
+
+  server = http.createServer(app);
 }
 
 /**

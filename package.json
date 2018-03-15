@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "init": "yarn install",
+    "init": "yarn install --production",
     "start": "pm2 start dev.json",
     "begin": "pm2 start prod.json"
   },
