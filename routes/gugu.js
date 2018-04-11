@@ -82,11 +82,23 @@ function data2base64(data) {
 }
 router.get('/printpic', (req, res, next) => {
   let url = 'http://oezn2ph4e.bkt.clouddn.com/IMG_4666.JPG';
-  request.get({ url, encoding: null }, (err, resp, body) => {
-    encodeImage(body).then((pic) => {
-      console.info('~~', pic);
+  // memobird.init()
+  //   .then(() => memobird.printText('你好咕咕机'))
+  //   .then(printcontentid => memobird.glance(printcontentid, 1000))
+  //   .then(printflag => {
+  //     return res.json({ printflag });
+  //   })
+  //   .catch(e => {
+  //     console.info('catche_', e);
+  //   });
+
+  memobird.init()
+    .then(() => memobird.printImage(url))
+    .then(printcontentid => memobird.watch(printcontentid, 3000, 15000))
+    .then(printflag => {
+      console.log('打印状态:', printflag);
+      return res.json({ printflag });
     });
-  });
 
   // memobird.init()
   // .then(() => memobird.printImage('http://7xrs2s.com1.z0.glb.clouddn.com/5388545BF2D3F99643AFE22BE8C87B8A.jpg'))
