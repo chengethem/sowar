@@ -6,7 +6,7 @@ const http = require('http');
 const querystring = require('querystring');
 const Iconv = require('iconv').Iconv;
 const Memobird = require('memobird');
-const gm = require('gm');
+// const gm = require('gm');
 // const example_config = {
 //   ak: 'e272c99b552547718b06f745db8941d4',
 //   timestamp: moment().format('YYYY-MM-DD HH:mm:ss'),
@@ -64,18 +64,18 @@ router.get('/print', (req, res, next) => {
     });
   });
 });
-const encodeImage = function (data) {
-  return new Promise((resolve, reject) => {
-    console.info('~~~', data.length);
-    gm(data).resize(384).flip().type('Bilevel').colors(2).toBuffer('bmp', (error, buffer) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(`P:${buffer.toString('base64')}`);
-      }
-    });
-  });
-}
+// const encodeImage = function (data) {
+//   return new Promise((resolve, reject) => {
+//     console.info('~~~', data.length);
+//     gm(data).resize(384).flip().type('Bilevel').colors(2).toBuffer('bmp', (error, buffer) => {
+//       if (error) {
+//         reject(error);
+//       } else {
+//         resolve(`P:${buffer.toString('base64')}`);
+//       }
+//     });
+//   });
+// }
 
 function data2base64(data) {
 
